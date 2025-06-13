@@ -41,7 +41,7 @@ def check_allowed_chat_id(update: Update) -> bool:
     chat_id = str(update.message.chat_id)
     return chat_id in TELEGRAM_ALLOWED_CHAT_IDS
 
-async def download_file(update: Update) -> str:
+async def download_file(msg) -> str:
     """
     Downloads the file sent in the update and returns the file path.
 
@@ -51,8 +51,6 @@ async def download_file(update: Update) -> str:
     Returns:
         str: The path to the downloaded file.
     """
-    msg = update.message
-
     if msg.document:
         file_name = msg.document.file_name
         file_obj = await msg.document.get_file()
@@ -96,7 +94,8 @@ async def print_file_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             "You are not authorized to use this bot."
         )
 
-    local_file_name = await download_file(update)
+    msg = update.message
+    local_file_name = await download_file(msg)
 
     if not local_file_name:
         return
