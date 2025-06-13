@@ -115,7 +115,7 @@ def main():
     """
     Main function to start the Telegram bot application.
     """
-    application = Application.builder().token(TOKEN).request(http_request).build()
+    application = Application.builder().token(TELEGRAM_BOT_TOKEN).request(HTTP_REQUEST).build()
     application.add_handler(MessageHandler(filters.Document.ALL | filters.PHOTO, print_file))
     application.add_handler(CommandHandler("start", start))
     application.run_polling()
