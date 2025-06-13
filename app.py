@@ -104,7 +104,7 @@ async def print_file_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     print_file(local_file_name)
     await msg.reply_text(f'✅ Printing initiated: `{local_file_name}`', parse_mode="Markdown")
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """
     Checks the chat ID of the user, for adding it to the allowed list.
     """
@@ -116,8 +116,8 @@ def main():
     Main function to start the Telegram bot application.
     """
     application = Application.builder().token(TELEGRAM_BOT_TOKEN).request(HTTP_REQUEST).build()
-    application.add_handler(MessageHandler(filters.Document.ALL | filters.PHOTO, print_file))
-    application.add_handler(CommandHandler("start", start))
+    application.add_handler(MessageHandler(filters.Document.ALL | filters.PHOTO, print_file_handler))
+    application.add_handler(CommandHandler("start", start_handler))
     application.run_polling()
 
 if __name__ == "__main__":
