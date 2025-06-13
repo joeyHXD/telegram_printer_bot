@@ -1,5 +1,7 @@
 # Telegram Printer Bot
-This is a Telegram bot that allows users to print documents and images directly from their Telegram chats. It requires to run on a machine with the default `lp` command available (typically a Linux machine with CUPS installed). The bot does not support configuration through the Telegram interface, you will need to edit the code if you want to do `lp -n 3 -o fit-to-page osition=top-left document.pdf` or similar.
+- This is a Telegram bot that allows users to print documents and images directly from their Telegram chats. 
+- It requires to run on a machine with the default `lp` command available (typically a Linux machine with CUPS installed). 
+- The bot does not support configuration through the Telegram interface, you will need to edit the code if you want to do `lp -n 3 -o fit-to-page osition=top-left document.pdf` or similar.
 
 ## How to Use
 1. Make sure your machine's printer works with the `lp` command by installing printer drivers and CUPS.
