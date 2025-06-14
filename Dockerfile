@@ -19,6 +19,4 @@ WORKDIR ${HOME_DIR}/app
 RUN uv sync
 RUN chown -R ${NON_ROOT_UID}:${NON_ROOT_GID} ${HOME_DIR}
 
-USER ${NON_ROOT_USER}
-
-CMD ["uv", "run", "app.py" "--no-cache", " --no-sync"]
+CMD ["uv", "run", "app.py", "--no-cache", " --no-sync"]
