@@ -1,8 +1,8 @@
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
 ARG NON_ROOT_USER="user"
-ARG NON_ROOT_UID="2222"
-ARG NON_ROOT_GID="2222"
+ARG NON_ROOT_UID="1000"
+ARG NON_ROOT_GID="1000"
 ARG HOME_DIR="/home/${NON_ROOT_USER}"
 ARG REPO_DIR="."
 
@@ -15,8 +15,7 @@ ENV UV_CACHE_DIR "${HOME_DIR}/.cache/uv"
 
 COPY --chown=${NON_ROOT_USER}:${NON_ROOT_GID} ${REPO_DIR} ${HOME_DIR}/app
 
-RUN chown -R ${NON_ROOT_UID}:${NON_ROOT_GID} ${HOME_DIR}
-
+USER ${NON_ROOT_USER}
 WORKDIR ${HOME_DIR}/app
 
-CMD ["uv", "run", "app.py", "--no-sync"]
+CMD ["uv", "run", "app.py"]
