@@ -1,5 +1,9 @@
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
+USER root
+RUN apt-get update \
+ && apt-get install -y cups
+
 ARG NON_ROOT_USER="user"
 ARG NON_ROOT_UID="1000"
 ARG NON_ROOT_GID="1000"
