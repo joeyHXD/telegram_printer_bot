@@ -12,7 +12,8 @@ ENV PATH "${HOME_DIR}/.local/bin:${PATH}"
 RUN mkdir -p ${HOME_DIR}/.cache/uv && chown -R ${NON_ROOT_UID}:${NON_ROOT_GID} ${HOME_DIR}/.cache
 ENV UV_CACHE_DIR "${HOME_DIR}/.cache/uv"
 
-COPY --chown=${NON_ROOT_USER}:${NON_ROOT_GID} ${REPO_DIR} ${HOME_DIR}/app
+COPY --chown=${NON_ROOT_USER}:${NON_ROOT_GID} ${REPO_DIR}/app.py ${HOME_DIR}/app/app.py
+COPY --chown=${NON_ROOT_USER}:${NON_ROOT_GID} ${REPO_DIR}/pyproject.toml ${HOME_DIR}/app/pyproject.toml
 WORKDIR ${HOME_DIR}/app
 
 RUN uv sync
