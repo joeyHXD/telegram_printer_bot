@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  telegram-printer:
+    build: .
+    network_mode: host
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - "${PRINTER_MOUNT}:/tmp"   # mount host dir → container /tmp
+    user: "1000:1000"
