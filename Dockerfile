@@ -15,7 +15,6 @@ ENV UV_CACHE_DIR "${HOME_DIR}/.cache/uv"
 
 COPY --chown=${NON_ROOT_USER}:${NON_ROOT_GID} ${REPO_DIR} ${HOME_DIR}/app
 
-RUN uv sync
 RUN chown -R ${NON_ROOT_UID}:${NON_ROOT_GID} ${HOME_DIR}
 
 WORKDIR ${HOME_DIR}/app
