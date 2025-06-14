@@ -4,6 +4,8 @@
 - The bot does not support configuration through the Telegram interface, you will need to edit the code if you want to do `lp -n 3 -o fit-to-page osition=top-left document.pdf` or similar.
 
 ## How to Use
+
+### Direct Installation
 1. Make sure your machine's printer works with the `lp` command by installing printer drivers and CUPS.
     - Install and configure CUPS (Common UNIX Printing System):
         ```bash
@@ -35,3 +37,6 @@
     ```bash
     uv run app.py
     ```
+### Using Docker
+1. Follow step 2 & 4 to clone the repo and setup the `.env` file.
+2. Run `docker compose up -d --build`
